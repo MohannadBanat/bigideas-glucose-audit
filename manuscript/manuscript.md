@@ -15,7 +15,9 @@ Authoring rules for this file
 
 <!-- Author order from M. Banat, 22 Nov 2026. Names and affiliations copied from
 Abu Owida et al., Sensors 2026, 26(22), 7340 (doi 10.3390/s26227340), where all
-five authors appear. Re-check each affiliation with its author before submission. -->
+five authors appear; checked against that article's PDF (first page) on 22 Nov 2026.
+ORCIDs are from the same PDF. Re-check each affiliation with its author before
+submission. E-mail addresses are kept out of this public repository. -->
 
 **Authors:** Mohannad Banat ^1^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4^
 
@@ -26,6 +28,8 @@ five authors appear. Re-check each affiliation with its author before submission
 ^3^ Department of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan
 
 ^4^ Department of Computer Science, King Khalid University, Abha 61421, Saudi Arabia
+
+**ORCID:** M. Banat 0009-0007-1413-4746; H. Abu Owida 0000-0001-6943-6134; A. Alsarhan 0000-0001-9075-2828; D. Al-Fraihat 0000-0002-0993-8287; A. Algarni 0000-0002-7556-958X
 
 \* Correspondence: [TODO: corresponding author(s) and e-mail address(es) to be agreed; in Abu Owida et al. (2026) they were H. Abu Owida and A. Algarni]
 
