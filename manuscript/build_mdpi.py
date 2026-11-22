@@ -110,7 +110,7 @@ def front_markdown(title, abstract_text, keywords, osf_url, highlights=None):
         "^2^\tDepartment of Information Technology, Faculty of Prince Al-Hussien bin Abdullah, The Hashemite University, Zarqa 13133, Jordan",
         "^3^\tDepartment of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan",
         "^4^\tDepartment of Computer Science, King Khalid University, Abha 61421, Saudi Arabia",
-        "\\*\tCorrespondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.A.) [e-mail addresses added at submission]",
+        "\\*\tCorrespondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.Alg.) [e-mail addresses added at submission]",
     ]
     cite_title = title
     side = [

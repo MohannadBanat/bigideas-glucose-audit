@@ -32,7 +32,7 @@ submission. E-mail addresses are kept out of this public repository. -->
 
 **ORCID:** M. Banat 0009-0007-1413-4746; H. Abu Owida 0000-0001-6943-6134; A. Alsarhan 0000-0001-9075-2828; D. Al-Fraihat 0000-0002-0993-8287; A. Algarni 0000-0002-7556-958X
 
-\* Correspondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.A.). [E-mail addresses are added only in the submission file, not in this public repository.]
+\* Correspondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.Alg.). [E-mail addresses are added only in the submission file, not in this public repository.]
 
 ## Highlights
 
@@ -811,7 +811,7 @@ random-split R² or on the Clarke grid.
 
 ## 6. Back Matter
 
-**Author Contributions:** [to be agreed; CRediT taxonomy].
+**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.Als., D.A.-F. and A.Alg.; visualization, M.B.; supervision, H.A.O. and M.B.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
 
 **Funding:** [to be completed].
 
