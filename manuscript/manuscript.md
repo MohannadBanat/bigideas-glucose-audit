@@ -813,7 +813,7 @@ random-split R² or on the Clarke grid.
 
 **Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.Als., D.A.-F. and A.Alg.; visualization, M.B.; supervision, H.A.O.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
 
-**Funding:** [to be completed].
+**Funding:** This research was funded by King Khalid University [grant number to be added].
 
 **Institutional Review Board Statement:** Not applicable. This is a
 secondary analysis of a public, de-identified dataset. The original data
