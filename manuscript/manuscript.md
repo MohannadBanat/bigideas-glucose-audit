@@ -430,7 +430,7 @@ changes.]
 3. What physiology adds.
 4. Why the Clarke grid is not evidence of accuracy.
 5. Recommendations for evaluating glucose estimation from wearables.
-6. Limitations: n = 16; one device; prediabetic range only; CGM error as a
+6. Limitations: n = 15 analysed (16 in the dataset); one device; prediabetic range only; CGM error as a
    ceiling (overall MARD of the G6 against reference blood glucose: 10.0% [@wadwa_g6_2018]); approximate re-implementation; food logs that
    cannot be aligned; the risk that the design is seen as repeating
    [@abuowida_stress_2026], answered by E3 and E5.
