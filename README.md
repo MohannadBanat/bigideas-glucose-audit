@@ -14,8 +14,8 @@ run on real glucose until an OSF DOI is passed to it.
 |---|---|---|---|
 | 1. Small files (food logs, Dexcom, demographics) | `./code/download_data.sh` | `data/big-ideas-1.1.3/` | done |
 | 2. Food-log/CGM alignment gate | `python code/check_time_of_day.py data/big-ideas-1.1.3 results/time_of_day` | `results/time_of_day/` | done (14/16 aligned) |
-| 3. Feature table (streams E4 data, ~2.6 GB per participant at peak) | `./code/build_features.sh data/big-ideas-1.1.3 results/features` | `results/features/` | in progress |
-| 4. Analysis code check on a noise target | `python code/experiments.py results/features results/selftest --self-test --quick` | `results/selftest/` | done on 6 participants (pipeline runs; no-signal target behaves as expected) |
+| 3. Feature table (streams E4 data, ~2.6 GB per participant at peak) | `./code/build_features.sh data/big-ideas-1.1.3 results/features` | `results/features/` | done (16 participants; 28,404 of 36,898 readings usable) |
+| 4. Analysis code check on a noise target | `python code/experiments.py results/features results/selftest --self-test --quick` | `results/selftest/` | done on 16 participants (no-signal target behaves as expected) |
 | 5. **File the registration on OSF** | `docs/02_preregistration_draft.md` | OSF DOI | **waiting on co-authors** |
 | 6. Registered experiments E1–E6 | `python code/experiments.py results/features results/experiments --osf-doi <DOI>` | `results/experiments/` | locked until step 5 |
 | 7. Figures | `python code/figures.py results/experiments` | `results/experiments/figures/` | |
