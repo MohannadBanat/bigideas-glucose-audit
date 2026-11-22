@@ -107,7 +107,9 @@ The 80/20 random splits use seeds 0–19 (one random draw per reading, numpy def
 
 ### Existing data
 
-Registration prior to analysis of the data.
+Authors have observed the data, but have not performed the proposed analyses.
+
+(Choose this option. The data exist, have been loaded and quality-checked, and some glucose values were read for a data-quality check, so "prior to observing" options do not apply. None of the registered analyses has been run.)
 
 ### Explanation of existing data
 
