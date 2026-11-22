@@ -7,14 +7,19 @@
     1
   ],
   "n_boot": 500,
-  "h2_guard_e1_r2_lower": -0.004533509851145001,
+  "h2_guard_e1_r2_lower": -0.005663134266965786,
   "python": "3.13.18",
   "numpy": "2.5.3",
   "pandas": "3.0.5",
   "sklearn": "1.9.1",
   "xgboost": "3.4.1",
-  "n_readings": 28404,
-  "n_participants": 16,
+  "rule7_min_usable": 864,
+  "rule7_low_overlap": [
+    "015"
+  ],
+  "rule7_applied": true,
+  "n_readings": 27934,
+  "n_participants": 15,
   "meal_participants": [
     "001",
     "002",

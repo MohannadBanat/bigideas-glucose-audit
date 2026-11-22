@@ -19,3 +19,7 @@ recording and ends two days before the CGM does.
 Total SCR counts for 005 (66,181) and 010 (60,643) are about twice the
 cohort median (about 28,000). They are kept as measured; SCR features are not
 normalised per participant.
+
+Participant 015 fails the data-integrity rule of the pre-registration
+(§3 rule 7: at least 864 usable readings, i.e. 72 h). Its table is kept here
+because the pre-specified sensitivity analysis EA6 uses it.

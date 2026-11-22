@@ -14,4 +14,3 @@ split,best,n_features
 12,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",28
 13,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",28
 14,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",28
-15,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",28

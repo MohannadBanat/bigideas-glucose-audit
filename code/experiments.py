@@ -9,6 +9,7 @@ result.
 Usage:
     python code/experiments.py FEATURE_DIR OUT_DIR --osf-doi 10.17605/OSF.IO/XXXXX
     python code/experiments.py FEATURE_DIR OUT_DIR --self-test [--quick]
+    python code/experiments.py FEATURE_DIR OUT_DIR_EA6 --osf-doi ... --include-low-overlap   (EA6)
 
 Outputs in OUT_DIR:
     predictions/<experiment>__<config>.csv.gz   every test prediction
@@ -39,7 +40,8 @@ SEEDS = list(range(20))
 N_BOOT = 10_000
 BOOT_SEED = 20261122
 ALPHA = 0.05
-H2_GUARD = 0.30          # E1 R2 lower bound needed before H2/H2b are interpreted (pre-registration §7)
+H2_GUARD = 0.30          # E1 R2 lower bound needed before H2/H2b/H3 are interpreted (pre-registration §7)
+MIN_USABLE = 864        # data-integrity rule (pre-registration §3, rule 7): >= 72 h of usable readings
 BUFFERS = [0, 30, 60, 120, 240]
 N_BLOCKS = 5
 
@@ -59,17 +61,24 @@ RIDGE_GRID = {"m__alpha": [0.1, 1, 10, 100]}
 
 
 # ---------------------------------------------------------------- data
-def load(feature_dir, self_test):
+def load(feature_dir, self_test, include_low_overlap=False):
     F = pd.concat([pd.read_csv(p, dtype={"participant": str})
                    for p in sorted(Path(feature_dir).glob("features_*.csv.gz"))], ignore_index=True)
     F = F[F["e4_ok"] & ~F["cgm_warmup"]].reset_index(drop=True)
+    # Rule 7 (data integrity): a participant needs >= MIN_USABLE readings left after rules 1-2.
+    # Counts only E4/CGM overlap; the target is not used. EA6 re-runs everything without this rule.
+    n = F.groupby("participant").size()
+    low = sorted(n[n < MIN_USABLE].index)
+    if low and not include_low_overlap:
+        print(f"rule 7: excluding {low} (usable readings {n[low].tolist()} < {MIN_USABLE})")
+        F = F[~F["participant"].isin(low)].reset_index(drop=True)
     F["ts"] = pd.to_datetime(F["ts"])
     if self_test:
         rng = np.random.default_rng(0)
         F["glucose"] = rng.normal(110, 20, len(F)).clip(40, 400)
     for p in F["participant"].unique():          # participant one-hot (ID+P)
         F[f"pid_{p}"] = (F["participant"] == p).astype(int)
-    return F
+    return F, low
 
 
 def pid_cols(F):
@@ -224,6 +233,8 @@ def main():
     ap.add_argument("--osf-doi")
     ap.add_argument("--self-test", action="store_true")
     ap.add_argument("--quick", action="store_true", help="tiny grids and 2 seeds (self-test only)")
+    ap.add_argument("--include-low-overlap", action="store_true",
+                    help="EA6 sensitivity analysis: keep participants that fail rule 7")
     a = ap.parse_args()
     if not a.self_test and not a.osf_doi:
         sys.exit("Refusing to run on real glucose without --osf-doi: file the registration first.")
@@ -235,7 +246,7 @@ def main():
 
     out = Path(a.out_dir)
     (out / "predictions").mkdir(parents=True, exist_ok=True)
-    F = load(a.feature_dir, a.self_test)
+    F, low_overlap = load(a.feature_dir, a.self_test, a.include_low_overlap)
     PID = pid_cols(F)
     meal_pids = sorted(F.loc[F["meal_ok"], "participant"].unique())
     FM = F[F["participant"].isin(meal_pids) & F["meal_ok"]].reset_index(drop=True)
@@ -318,16 +329,17 @@ def main():
         running = max(running, min(1.0, (m - rank) * Hd["p_one_sided"].iloc[i]))
         adj[i] = running
     Hd["p_holm"] = adj
-    # Registered guard: H2/H2b are interpretable only if E1's lower one-sided 95% bound of R2 exceeds 0.30
+    # Registered guard: H2/H2b/H3 are interpretable only if E1's lower one-sided 95% bound of R2 exceeds 0.30
     e1_lower = float(np.nanpercentile(R("E1_random_fullkl"), 5))
-    Hd["interpretable"] = ~Hd["hypothesis"].isin(["H2", "H2b"]) | (e1_lower > H2_GUARD)
+    Hd["interpretable"] = ~Hd["hypothesis"].isin(["H2", "H2b", "H3"]) | (e1_lower > H2_GUARD)
     Hd["supported"] = (Hd["p_holm"] < ALPHA) & Hd["interpretable"]
     Hd.to_csv(out / "hypotheses.csv", index=False)
 
     info = {"self_test": a.self_test, "quick": a.quick, "osf_doi": a.osf_doi, "seeds": SEEDS,
             "n_boot": N_BOOT, "h2_guard_e1_r2_lower": e1_lower, "python": platform.python_version(), "numpy": np.__version__,
             "pandas": pd.__version__, "sklearn": sklearn.__version__, "xgboost": xgboost.__version__,
-            "n_readings": len(F), "n_participants": F["participant"].nunique(), "meal_participants": meal_pids}
+            "rule7_min_usable": MIN_USABLE, "rule7_low_overlap": low_overlap,
+            "rule7_applied": not a.include_low_overlap, "n_readings": len(F), "n_participants": F["participant"].nunique(), "meal_participants": meal_pids}
     (out / "run_info.json").write_text(json.dumps(info, indent=2))
     print(Hd.to_string(index=False))
 

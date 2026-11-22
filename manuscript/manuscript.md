@@ -199,6 +199,23 @@ sensor warm-up. Following Karunarathna and Liang
 it, more than half of the expected samples were missing for any of the
 ACC, BVP, EDA, skin-temperature or HR signals.
 
+One data-integrity rule applied at the level of participants. A participant
+was excluded from all registered experiments if fewer than 864 readings
+(72 h at 5-min sampling) had both a CGM value and usable E4 data after the
+two rules above. The rule depends only on when the two devices were
+recording, not on glucose values or model performance. It guarantees at
+least three full daily cycles per participant, and enough training data
+around each test block in the BLOCKED-240 scheme, which removes up to 8 h
+around every test block. Only participant 015 failed it: 470 usable readings
+(about 39 h), because its E4 recording started two weeks before its CGM
+recording and ended two days before it. The next-lowest participant had
+1331 usable readings. The threshold was set before registration but after
+the per-participant reading counts had been seen (Section 2.9). A
+pre-specified sensitivity analysis repeats every registered test with 015
+included (EA6, Section 2.8). The main analyses therefore use 15 participants,
+and 14 when MEAL features are used, since 015 also failed the alignment
+check.
+
 Validity rules for individual features were fixed in the registration.
 Values that broke a rule were set to missing, and the reading was kept.
 
@@ -292,7 +309,7 @@ the training fold for every test reading.
 - **RANDOM.** Readings from all participants were pooled and split 80/20 at
   random, as published [@karunarathna_glucose_2025]. This was repeated with
   20 seeds.
-- **LOPO.** Each participant served once as the test set: 16 folds, or 14
+- **LOPO.** Each participant served once as the test set: 15 folds, or 14
   when MEAL features were used.
 - **BLOCKED-*b*.** Each participant's recording was cut into five
   contiguous blocks, and each block served once as the test set. Training
@@ -302,7 +319,13 @@ the training fold for every test reading.
 ### 2.7. Registered Experiments and Hypotheses
 
 The six registered experiments and eight hypotheses are listed in Table 1.
-H1, H2b and H4 were designated primary.
+H1, H2b and H4 were designated primary. H2, H2b and H3 compare shortcut
+models with FULL-KL, and each passes trivially when FULL-KL has learned
+nothing: a non-inferiority test passes when both models score near zero,
+and H3 passes when the FULL-KL R² is slightly negative. These three tests
+were therefore to be interpreted only if the lower 95% bound of the E1 R²
+exceeded 0.30. Dry runs of the analysis code on a noise target showed both
+failure modes.
 
 **Table 1.** Registered experiments and hypotheses.
 
@@ -325,14 +348,17 @@ with a participant-level bootstrap [@efron_bootstrap_1993]. In each of
 10,000 resamples, participants were drawn with replacement, and the metric
 or difference was recomputed from their test predictions. In the RANDOM
 scheme, a participant's predictions were pooled over the 20 seeds. For
-comparisons, both arms were recomputed within the same resample. With 16
+comparisons, both arms were recomputed within the same resample. With 15
 participants, intervals from cross-validation are wide
 [@varoquaux_cvfailure_2018], so the registration fixed non-inferiority
 margins in advance. That way, a non-significant difference is not
 mistaken for equivalence. All eight registered tests were one-sided, with
 Holm–Bonferroni correction at a family-wise α of 0.05 [@holm_1979].
 Exploratory analyses (Section 3.7) were not corrected and are labelled as
-exploratory.
+exploratory. One sensitivity analysis was pre-specified (EA6): all
+registered tests were repeated with the data-integrity rule switched off,
+so that participant 015 was included. Its results are reported beside the
+primary ones and are not part of the Holm family.
 
 ### 2.9. Information Seen Before Registration
 
@@ -340,7 +366,11 @@ Before registration, the authors had read the dataset documentation and the
 published articles. They had also run the alignment check of Section 2.2,
 which read the food logs, CGM values and `Demographics.csv` but no E4 data,
 and had built the feature table, which computes model inputs but fits no
-model. One rule of the alignment check was changed after its first run.
+model. From the feature build they had seen, per participant, how many
+readings fell in the sensor warm-up, lacked E4 data, or remained usable;
+these counts led to the data-integrity rule of Section 2.3. The glucose
+values in the feature table were not summarised, and the analysis code was
+tested only on a synthetic noise target. One rule of the alignment check was changed after its first run.
 The day-shift comparison originally included shifts that kept as few as 5
 meal events, and noise in those shifts flagged three participants who were
 otherwise aligned. The change is documented with the check's code and
@@ -370,6 +400,10 @@ exclusion, the share of valid pulse and EDA features, and the E4/CGM overlap.]
 ### 3.5. E4: What Wrist Physiology Adds
 ### 3.6. E5 and E6: Clarke Grid and Temporal Leakage
 ### 3.7. Exploratory Analyses
+
+[RESULT: EA1–EA5. EA6 sensitivity analysis with participant 015 included:
+supplementary table of all eight tests, and a sentence on any verdict that
+changes.]
 
 ## 4. Discussion
 
