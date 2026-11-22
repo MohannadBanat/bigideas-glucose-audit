@@ -811,7 +811,7 @@ random-split R² or on the Clarke grid.
 
 ## 6. Back Matter
 
-**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.Als., D.A.-F. and A.Alg.; visualization, M.B.; supervision, H.A.O. and M.B.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
+**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.Als., D.A.-F. and A.Alg.; visualization, M.B.; supervision, H.A.O.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
 
 **Funding:** [to be completed].
 
