@@ -196,7 +196,7 @@ registered tests.
 | 1 | E1 reproduction criterion | mean R² ≥ 0.63 | Approximate re-implementation; same tolerance logic as the stress paper |
 | 2 | H1 margin | 0.30 | Handover suggestion. Bent et al.'s LOPO RMSE (21 mg/dL) against Karunarathna & Liang's 11.9 implies a drop of this size or larger |
 | 3 | Non-inferiority margins H2, H2b | 0.05 R² | Same margin as the stress paper's H2 |
-| 4 | H4 margin | 2.0 mg/dL RMSE | About 2% of a typical 100 mg/dL reading; well below G6 sensor error (MARD around 9%) |
+| 4 | H4 margin | 2.0 mg/dL RMSE | About 2% of a typical 100 mg/dL reading; well below G6 sensor error (overall MARD 10.0%; Wadwa et al. 2018) |
 | 5 | H5 margin | 0.10 R² | Judgement: an R² gain below 0.10 over a constant prediction is not useful for estimation |
 | 6 | Primary hypotheses | H1, H2b, H4 | One per claim: leakage size, leakage mechanism, physiology's added value |
 | 7 | ELAPSED probe (H2b) | Add | See §7 |
