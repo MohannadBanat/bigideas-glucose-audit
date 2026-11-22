@@ -1,7 +1,7 @@
 ---
 title: "Time and Identity Shortcuts in Wrist-Wearable Glucose Estimation: A Pre-Registered Re-Evaluation of the BIG IDEAs Dataset"
 journal: Sensors (MDPI), Article
-status: "PRE-RESULTS DRAFT, 22 Nov 2026. Sections 1, 2 and 6 are complete drafts. Results, Discussion and Abstract contain placeholders, marked [RESULT], that are filled only after the OSF registration is filed and the registered analyses are run."
+status: "PRE-RESULTS DRAFT, 22 Nov 2026. Sections 1, 2 and 6 are complete drafts. The registration was filed on OSF on 22 Nov 2026 (https://osf.io/cvfa3/, DOI pending approval). Results, Discussion and Abstract contain placeholders, marked [RESULT], that are filled only after the DOI exists and the registered analyses are run."
 bibliography: ../references/references.bib
 ---
 
@@ -19,7 +19,7 @@ five authors appear; checked against that article's PDF (first page) on 22 Nov 2
 ORCIDs are from the same PDF. Re-check each affiliation with its author before
 submission. E-mail addresses are kept out of this public repository. -->
 
-**Authors:** Mohannad Banat ^1^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4^
+**Authors:** Mohannad Banat ^1,\*^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4,\*^
 
 ^1^ Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan
 
@@ -31,7 +31,7 @@ submission. E-mail addresses are kept out of this public repository. -->
 
 **ORCID:** M. Banat 0009-0007-1413-4746; H. Abu Owida 0000-0001-6943-6134; A. Alsarhan 0000-0001-9075-2828; D. Al-Fraihat 0000-0002-0993-8287; A. Algarni 0000-0002-7556-958X
 
-\* Correspondence: [TODO: corresponding author(s) and e-mail address(es) to be agreed; in Abu Owida et al. (2026) they were H. Abu Owida and A. Algarni]
+\* Correspondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.A.). [E-mail addresses are added only in the submission file, not in this public repository.]
 
 ## Abstract
 

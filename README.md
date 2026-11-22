@@ -4,9 +4,10 @@ This is a pre-registered re-evaluation of glucose estimation from the Empatica
 E4 wristband on the PhysioNet BIG IDEAs dataset (v1.1.3). It is the first-author
 project of M. Banat (Al-Ahliyya Amman University), targeting *Sensors* (MDPI).
 
-**Status:** the analysis plan is drafted but **not yet filed on OSF**. No
-model has been trained on the real target. `code/experiments.py` refuses to
-run on real glucose until an OSF DOI is passed to it.
+**Status:** the analysis plan was signed off by all co-authors and filed on
+OSF on 22 Nov 2026 (https://osf.io/cvfa3/); the DOI is pending OSF approval.
+No model has been trained on the real target. `code/experiments.py` refuses
+to run on real glucose until the OSF DOI is passed to it.
 
 ## Order of work
 
@@ -16,7 +17,7 @@ run on real glucose until an OSF DOI is passed to it.
 | 2. Food-log/CGM alignment gate | `python code/check_time_of_day.py data/big-ideas-1.1.3 results/time_of_day` | `results/time_of_day/` | done (14/16 aligned) |
 | 3. Feature table (streams E4 data, ~2.6 GB per participant at peak) | `./code/build_features.sh data/big-ideas-1.1.3 results/features` | `results/features/` | done (16 participants; 28,404 of 36,898 readings usable; 015 then fails the data-integrity rule, leaving 15) |
 | 4. Analysis code check on a noise target | `python code/experiments.py results/features results/selftest --self-test --quick` | `results/selftest/` | done on the 15 participants retained under rule 7 (no-signal target behaves as expected) |
-| 5. **File the registration on OSF** | `docs/02_preregistration_draft.md` | OSF DOI | **waiting on co-authors** |
+| 5. **File the registration on OSF** | `docs/02_preregistration_draft.md` | OSF DOI | filed 22 Nov 2026 as https://osf.io/cvfa3/ after co-author sign-off; DOI pending OSF approval |
 | 6. Registered experiments E1–E6 | `python code/experiments.py results/features results/experiments --osf-doi <DOI>` | `results/experiments/` | locked until step 5 |
 | 7. Figures | `python code/figures.py results/experiments` | `results/experiments/figures/` | |
 | 8. Manuscript | `manuscript/manuscript.md` | | Introduction and Methods drafted |

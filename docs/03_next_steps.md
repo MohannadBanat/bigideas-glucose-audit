@@ -2,7 +2,7 @@
 
 | # | Task | Done when | Owner | Date |
 |---|---|---|---|---|
-| 1 | Agree the project with Dr. Abu Owida and fix the author list | Written OK from the supervisor | | Author order set by M. Banat 22 Nov 2026: Banat, Abu Owida, Alsarhan, Al-Fraihat, Algarni (manuscript title page). Still open: corresponding author, e-mails, written OK from each co-author |
+| 1 | Agree the project with Dr. Abu Owida and fix the author list | Written OK from the supervisor | | Author order set by M. Banat 22 Nov 2026: Banat, Abu Owida, Alsarhan, Al-Fraihat, Algarni (manuscript title page). Corresponding authors: M. Banat and A. Algarni (22 Nov 2026). Co-authors signed off on the pre-registration decisions 22 Nov 2026. Still open: e-mails in the submission file |
 | 2 | Download BIG IDEAs v1.1.3 (`code/download_data.sh`) | All 16 folders + Demographics.csv present | | Small files done 22 Nov 2026 (checksums OK). Full E4 data (~34 GB) still to do: `--full` |
 | 3 | Run `code/check_time_of_day.py` | Meal-hour table for all 16 participants; go/no-go on the TIME control | | Done 22 Nov 2026: TIME control GO; MEAL usable for 14/16 (`results/time_of_day/`) |
 | 4 | Read Demographics.csv; resolve the sex description of the cohort | One sentence for the Methods section | | Done 22 Nov 2026: 9 female, 7 male; HbA1c 5.3–6.4% |
