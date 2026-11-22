@@ -10,6 +10,7 @@ Writes into RESULTS_DIR/figures/:
     fig4_clarke.png              Clarke grid: mean baseline vs FULL-KL (LOPO)
     fig5_buffer.png              R2 against buffer length (E6)
     fig6_hypotheses.png          registered tests: estimate, 95% CI, margin
+    figS2_shap_groups.png        EA1 (exploratory): share of mean |SHAP| by feature group
 Each figure is drawn with constrained layout and checked for overlapping text
 by `assert_no_overlap`.
 """
@@ -152,9 +153,29 @@ def fig_hypotheses(H, out):
         ax.axvline(margins[h["hypothesis"]], color=ORANGE, lw=1, ls="--")
         ax.set_yticks([])
         ax.spines["left"].set_visible(False)
-        ax.set_title(f"{h['hypothesis']}: {h['statement']}  (Holm p = {h['p_holm']:.3g}{note})", loc="left", fontsize=7.5)
+        ax.set_title(f"{h['hypothesis']}: {h['statement'].replace('R2', 'R²')}  (Holm p = {h['p_holm']:.3g}{note})", loc="left", fontsize=7.5)
         ax.tick_params(labelsize=7)
     save(fig, out / "fig6_hypotheses.png")
+
+
+def fig_shap(ea_dir, out):
+    f = ea_dir / "ea1_shap.csv"
+    if not f.exists():
+        return
+    S = pd.read_csv(f).groupby(["scheme", "group"])["share"].sum().unstack().reindex(["RANDOM", "LOPO"])
+    groups = [g for g in ["TIME", "sex", "ACT", "PHYS"] if g in S.columns]
+    colors = {"TIME": ORANGE, "sex": INK, "ACT": GREY, "PHYS": BLUE}
+    fig, ax = plt.subplots(figsize=(6.0, 1.9), layout="constrained")
+    left = np.zeros(len(S))
+    for g in groups:
+        ax.barh(range(len(S)), S[g], left=left, color=colors[g], height=0.55, label=g)
+        left += S[g].to_numpy()
+    ax.set_yticks(range(len(S)), ["RANDOM (seed 0)", "LOPO (mean of folds)"])
+    ax.invert_yaxis()
+    ax.set_xlim(0, 1)
+    ax.set_xlabel("Share of mean |SHAP| (FULL-KL, XGBoost)")
+    ax.legend(ncol=len(groups), loc="lower center", bbox_to_anchor=(0.5, 1.02), frameon=False, fontsize=8)
+    save(fig, out / "figS2_shap_groups.png")
 
 
 def main(res):
@@ -169,6 +190,7 @@ def main(res):
     fig_clarke(res / "predictions", out)
     fig_buffer(M, out)
     fig_hypotheses(H, out)
+    fig_shap(res.parent / "exploratory", out)
     print("figures written to", out)
 
 

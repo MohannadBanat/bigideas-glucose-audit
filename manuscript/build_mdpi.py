@@ -17,8 +17,9 @@ three-line tables; running header "Sensors 2026, 26, x" with "n of N";
 first page with journal line, title block, a left sidebar (citation,
 editor, dates, licence) beside Highlights, Abstract and Keywords.
 
-[RESULT] placeholders are kept and highlighted; e-mail addresses are not
-added.
+Highlights are read from a "## Highlights" section of manuscript.md (two "###"
+questions, each followed by bullet points). Any [RESULT] placeholder still in
+the text is kept and highlighted; e-mail addresses are not added.
 """
 import argparse
 import copy
@@ -47,6 +48,7 @@ BLUE = RGBColor(0x0B, 0x57, 0xA4)
 TEAL = RGBColor(0x1C, 0x7C, 0x86)
 DATE = "22 Nov 2026"
 PENDING = "PENDING REGISTERED ANALYSIS"
+STAGE = "draft with registered results"
 
 
 # ----------------------------------------------------------------- markdown
@@ -56,6 +58,12 @@ def prepare_markdown(md, osf_url):
     body = md[meta.end():]
     body = re.sub(r"<!--.*?-->", "", body, flags=re.S)
 
+    hl = re.search(r"## Highlights\n(.*?)\n(?=## )", body, re.S)
+    highlights = []
+    if hl:
+        for block in re.split(r"^### ", hl.group(1), flags=re.M)[1:]:
+            q, *rest = block.strip().split("\n")
+            highlights.append((q.strip(), [b[2:].strip() for b in rest if b.startswith("- ")]))
     abstract = re.search(r"## Abstract\n(.*?)\n\*\*Keywords:\*\*(.*?)\n\n", body, re.S)
     abstract_text = " ".join(abstract.group(1).split())
     keywords = " ".join(abstract.group(2).split())
@@ -65,7 +73,9 @@ def prepare_markdown(md, osf_url):
                          f"registered analysis. The registration ({osf_url}) was filed on {DATE} and awaits OSF "
                          "approval; no model has been run on real glucose.\n:::\n\n")
     for h in ["## 3. Results\n", "## 4. Discussion\n", "## 5. Conclusions\n"]:
-        body = body.replace(h, h + note("this section"), 1)
+        sec = body.split(h, 1)[1].split("\n## ", 1)[0] if h in body else ""
+        if "[RESULT" in sec:
+            body = body.replace(h, h + note("this section"), 1)
     body = body.replace("[OSF DOI: RESULT]", f"[{osf_url}]")
     body = re.sub(r"\[RESULT\]", f"[**{PENDING}**]", body)
     body = re.sub(r"\[RESULT:", f"[**{PENDING}:**", body)
@@ -78,7 +88,8 @@ def prepare_markdown(md, osf_url):
     # Table captions written as "**Table N.** ..." paragraphs
     body = re.sub(r"^(\*\*Table [A-Z]?\d+\.\*\*.*)$", r'::: {custom-style="MDPI Table Caption"}\n\1\n:::', body, flags=re.M)
     # Abbreviation/notes line right after a table ("CV, cross-validation; ...")
-    body = re.sub(r"\n\n(CV, cross-validation;[^\n]*)\n", r'\n\n::: {custom-style="MDPI Table Note"}\n\1\n:::\n', body)
+    body = re.sub(r"\n\n((?:CV, cross-validation;|Notes?:|Abbreviations:)[^\n]*)\n",
+                  r'\n\n::: {custom-style="MDPI Table Note"}\n\1\n:::\n', body)
 
     # Back matter: no heading, 9 pt run-in paragraphs
     bm_start = body.index("## 6. Back Matter")
@@ -88,10 +99,10 @@ def prepare_markdown(md, osf_url):
     body = body[:bm_start] + back + "\n" + body[bm_end:]
 
     body += "\n\n## References\n\n::: {#refs}\n:::\n"
-    return title, abstract_text, keywords, body
+    return title, abstract_text, keywords, body, highlights
 
 
-def front_markdown(title, abstract_text, keywords, osf_url):
+def front_markdown(title, abstract_text, keywords, osf_url, highlights=None):
     authors = ("Mohannad Banat ^1,\\*^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, "
                "Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4,\\*^")
     affils = [
@@ -103,7 +114,7 @@ def front_markdown(title, abstract_text, keywords, osf_url):
     ]
     cite_title = title
     side = [
-        f"**Status:** pre-results draft, {DATE}. Not for circulation.",
+        f"**Status:** {STAGE}, {DATE}. Not for circulation.",
         "**Citation:** Banat, M.; Abu Owida, H.; Alsarhan, A.; Al-Fraihat, D.; Algarni, A. "
         f"{cite_title}. *Sensors* **2026**, *26*, x. https://doi.org/10.3390/xxxxx",
         "**Academic Editor:** [to be assigned]",
@@ -120,10 +131,9 @@ def front_markdown(title, abstract_text, keywords, osf_url):
     out += [div("MDPI Affiliation", a) for a in affils]
     out += [div("MDPI Sidebar", s) for s in side]
     out += [div("MDPI Abstract Head", "Highlights"),
-            div("MDPI Highlights Q", "What are the main findings?"),
-            div("MDPI Bullet", f"•\t[**{PENDING}**]"), div("MDPI Bullet", f"•\t[**{PENDING}**]"),
-            div("MDPI Highlights Q", "What are the implications of the main findings?"),
-            div("MDPI Bullet", f"•\t[**{PENDING}**]"), div("MDPI Bullet", f"•\t[**{PENDING}**]"),
+            *[d for q, bullets in (highlights or [("What are the main findings?", [f"[**{PENDING}**]"] * 2),
+                                               ("What are the implications of the main findings?", [f"[**{PENDING}**]"] * 2)])
+              for d in [div("MDPI Highlights Q", q)] + [div("MDPI Bullet", f"•\t{b}") for b in bullets]],
             div("MDPI Abstract Head", "Abstract"),
             div("MDPI Abstract", abstract_text),
             div("MDPI Keywords", f"**Keywords:** {keywords}"),
@@ -272,7 +282,7 @@ def header_footer(doc):
     # other pages: running head with page n of N
     p = clear(sec.header)
     styled_run(p, "Sensors", 8, italic=True); styled_run(p, " 2026", 8, bold=True)
-    styled_run(p, ", ", 8); styled_run(p, "26", 8, italic=True); styled_run(p, ", x (pre-results draft, " + DATE + ")", 8)
+    styled_run(p, ", ", 8); styled_run(p, "26", 8, italic=True); styled_run(p, ", x (" + STAGE + ", " + DATE + ")", 8)
     styled_run(p, "\t", 8)
     field(styled_run(p, "", 8), "PAGE"); styled_run(p, " of ", 8); field(styled_run(p, "", 8), "NUMPAGES")
     border(p._p.get_or_add_pPr(), "bottom", 4, space=3)
@@ -375,17 +385,17 @@ def main():
     ap.add_argument("out")
     ap.add_argument("--pdf", action="store_true")
     ap.add_argument("--csl", default=str(HERE / "mdpi.csl"))
-    ap.add_argument("--osf", default="https://osf.io/cvfa3/")
+    ap.add_argument("--osf", default="https://doi.org/10.17605/OSF.IO/CVFA3")
     a = ap.parse_args()
     out = Path(a.out).resolve()
     md = (HERE / "manuscript.md").read_text()
-    title, abstract_text, keywords, body = prepare_markdown(md, a.osf)
+    title, abstract_text, keywords, body, highlights = prepare_markdown(md, a.osf)
     with tempfile.TemporaryDirectory() as td:
         td = Path(td)
         ref = td / "reference.docx"; build_reference(ref)
         src = td / "ms.md"
         src.write_text("---\nbibliography: " + str(ROOT / "references" / "references.bib") +
-                       "\nlink-citations: true\n---\n\n" + front_markdown(title, abstract_text, keywords, a.osf) +
+                       "\nlink-citations: true\n---\n\n" + front_markdown(title, abstract_text, keywords, a.osf, highlights) +
                        "\n\n" + body)
         subprocess.run(["pandoc", str(src), "--citeproc", "--csl", a.csl, "--reference-doc", str(ref), "--shift-heading-level-by=-1",
                         "-o", str(out)], check=True)

@@ -1,0 +1,16 @@
+split,best,n_features
+0,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+1,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+2,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+3,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+4,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+5,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+6,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+7,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+8,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+9,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+10,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+11,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+12,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+13,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
+14,"{'m__learning_rate': 0.05, 'm__max_depth': 3, 'm__n_estimators': 100, 'm__subsample': 0.8}",5
