@@ -131,7 +131,7 @@ glucose estimation.
 
 This paper makes four contributions. (i) It is a participant-level
 re-evaluation of glucose estimation on BIG IDEAs, with the analysis plan
-registered before any model was trained [https://doi.org/10.17605/OSF.IO/CVFA3]. (ii) It tests
+registered before any model was trained (https://doi.org/10.17605/OSF.IO/CVFA3). (ii) It tests
 shortcut-only models: clock time alone, elapsed time with participant
 identity, and identity alone. We found no such controls in the published
 work on this dataset. (iii) It measures what wrist physiology adds to time,
@@ -829,9 +829,7 @@ registration is at https://doi.org/10.17605/OSF.IO/CVFA3. The code and all deriv
 https://doi.org/10.5281/zenodo.24448197 (snapshot of
 https://github.com/MohannadBanat/bigideas-glucose-audit).
 
-**Use of AI tools:** [The authors must state here, in MDPI's required form,
-which AI tools were used and for what. They take full responsibility for
-the content.]
+**Use of AI tools:** A generative AI tool (Claude Opus 5.5, Anthropic, San Francisco, CA, USA) was used under the authors' direction to write the analysis code, draft the text and carry out an independent check of the code and reported numbers; the authors reviewed the analysis plans, code, outputs and text. The authors take full responsibility for the content of this publication.
 
 **Conflicts of Interest:** The authors declare no conflicts of interest.
 
