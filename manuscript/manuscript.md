@@ -455,7 +455,7 @@ original investigators [@bent_digital_2021].
 
 **Data Availability Statement:** The dataset is openly available on
 PhysioNet at https://doi.org/10.13026/aw6y-fc44 (version 1.1.3). The
-registration is at [RESULT: OSF DOI]. The code and all outputs are at
+registration is at https://osf.io/cvfa3/ [RESULT: OSF DOI once issued]. The code and all outputs are at
 https://github.com/MohannadBanat/bigideas-glucose-audit and archived at
 [RESULT: Zenodo DOI].
 
@@ -467,9 +467,19 @@ the content.]
 
 ## Appendix A
 
-**Table A1.** Model settings: the XGBoost grid (depth {3, 6}; trees {100,
-300}; learning rate {0.05, 0.1}; subsampling 0.8), the ridge grid (α {0.1,
-1, 10, 100}), inner cross-validation, seeds, and 10,000 bootstrap resamples.
+**Table A1.** Model settings, as registered.
+
+| Setting | Value |
+|---|---|
+| XGBoost grid | Depth ∈ {3, 6}; trees ∈ {100, 300}; learning rate ∈ {0.05, 0.1}; subsampling 0.8 |
+| Ridge grid | α ∈ {0.1, 1, 10, 100} |
+| Pipeline | Median imputation, standard scaling, regressor; fitted on training data only |
+| Inner CV | Five-fold; grouped by participant for E2, E4, E5 and E6; ungrouped for E1 and E3 |
+| Feature selection (FULL-KL) | Random-forest importance on the training data; top 30 features |
+| Seeds | 0–19 for random splits; one fit per fold for LOPO and BLOCKED |
+| Bootstrap | 10,000 participant resamples (seed 20261122) |
+
+CV, cross-validation; LOPO, leave-one-participant-out.
 
 ## Appendix B
 
