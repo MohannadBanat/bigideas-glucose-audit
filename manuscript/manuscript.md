@@ -13,9 +13,21 @@ Authoring rules for this file
 - The text is written new for this paper. Methods shared with Abu Owida et al. (2026) are described in new words and cited, not copied.
 -->
 
-**Authors:** Mohannad Banat ^1,\*^, [co-authors and order to be agreed; see docs/03_next_steps.md, item 1]
+<!-- Author order from M. Banat, 22 Nov 2026. Names and affiliations copied from
+Abu Owida et al., Sensors 2026, 26(22), 7340 (doi 10.3390/s26227340), where all
+five authors appear. Re-check each affiliation with its author before submission. -->
+
+**Authors:** Mohannad Banat ^1^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4^
 
 ^1^ Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan
+
+^2^ Department of Information Technology, Faculty of Prince Al-Hussien bin Abdullah, The Hashemite University, Zarqa 13133, Jordan
+
+^3^ Department of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan
+
+^4^ Department of Computer Science, King Khalid University, Abha 61421, Saudi Arabia
+
+\* Correspondence: [TODO: corresponding author(s) and e-mail address(es) to be agreed; in Abu Owida et al. (2026) they were H. Abu Owida and A. Algarni]
 
 ## Abstract
 
