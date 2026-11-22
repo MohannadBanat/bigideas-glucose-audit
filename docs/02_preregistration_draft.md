@@ -14,8 +14,10 @@ OSF swge8; published as Abu Owida et al., *Sensors* 2026, 26, 7340).
 ## 1. Data
 
 - BIG IDEAs Lab Glycemic Variability and Wearable Device Data, **v1.1.3**
-  (doi 10.13026/aw6y-fc44), downloaded from physionet.org. The AWS mirror
-  stops at v1.1.2. Files are checked against the published `SHA256SUMS.txt`.
+  (doi 10.13026/aw6y-fc44). Food logs, Dexcom files and `Demographics.csv`
+  are downloaded from physionet.org. E4 files are streamed from the AWS mirror
+  (which stops at v1.1.2; its E4 and Dexcom files are byte-identical to v1.1.3)
+  and every file is checked against the v1.1.3 `SHA256SUMS.txt`.
 - 16 participants: Dexcom G6 (interstitial glucose every 5 min), Empatica E4
   (BVP 64 Hz, EDA and TEMP 4 Hz, ACC 32 Hz, HR 1 Hz, IBI), food logs, and
   `Demographics.csv` (sex, HbA1c).
@@ -33,6 +35,14 @@ OSF swge8; published as Abu Owida et al., *Sensors* 2026, 26, 7340).
     5.3–6.4%). It also showed mean CGM glucose by clock hour. No E4 data was
     read. One rule of that check was changed after its first run, and the
     change is documented there.
+  - the per-participant counts from the feature build (`code/features.py`,
+    22 Nov 2026; `results/features/features_log.csv`): how many CGM readings
+    fall in the sensor warm-up, how many have no E4 data, and how many remain.
+    These counts use only the timing of the E4 and Dexcom records. The glucose
+    values in the feature tables were not summarised or plotted; the analysis
+    code was checked only on a synthetic noise target (`results/selftest/`).
+    These counts are what showed that participant 015 has far less overlapping
+    data than the others, and rule 7 in §3 was written after seeing them.
 - No glucose-estimation model has been trained by the authors on any version
   of this dataset.
 
@@ -71,6 +81,23 @@ These are fixed now and applied identically in every experiment.
    every experiment that uses MEAL features. No offset is corrected.
 6. Missing feature values are imputed with the training-fold median inside the
    model pipeline, as Karunarathna & Liang did.
+7. **Data-integrity exclusion: minimum E4/CGM overlap [PROPOSED].** A
+   participant is excluded from every registered experiment if fewer than
+   **864 readings (72 h at 5-min sampling)** remain after rules 1 and 2, that
+   is, readings with both a valid CGM value and usable E4 data. This is a
+   data-integrity rule, not an outlier rule: it depends only on when the two
+   devices were recording, never on glucose values or model performance.
+   Reasons for the threshold: 72 h gives at least three full daily cycles,
+   which the TIME features need; and BLOCKED-240 removes up to 8 h of
+   training data around each of 5 test blocks, which leaves too little to
+   train on in a short recording. The rule excludes one participant, 015
+   (470 usable readings, about 39 h: its E4 recording starts two weeks before
+   its CGM recording and ends two days before the CGM does). The next-lowest
+   participant has 1,331 usable readings (about 111 h), so the result does not
+   depend on the exact threshold between 470 and 1,331. Participant 015 is
+   already excluded from MEAL experiments by rule 5, so E4 is unchanged; E1,
+   E2, E3, E5 and E6 use 15 participants. EA6 repeats the analysis with 015
+   included.
 
 ## 4. Feature sets
 
@@ -168,8 +195,8 @@ E1 is descriptive and is not tested.
   MARD, and Clarke error grid zones (Clarke et al., 1987), pooled and per
   participant.
 - **Uncertainty:** 95% CIs and one-sided p values from **10,000 participant
-  bootstrap resamples** (as in the stress paper). Each resample draws 16
-  participants (or 14) with replacement, and the statistic is recomputed from
+  bootstrap resamples** (as in the stress paper). Each resample draws 15
+  participants (or 14 for E4) with replacement, and the statistic is recomputed from
   those participants' test predictions. For RANDOM, a participant's test
   predictions are pooled across the 20 seeds.
 - **Paired differences** (H1, H2, H2b, H3, H4, H5, H7) are computed within
@@ -177,7 +204,7 @@ E1 is descriptive and is not tested.
 - **Non-inferiority and equivalence:** one-sided at the margins above. A
   failed non-inferiority test is reported as "not established", never as
   "inferior".
-- With n = 16, every LOPO fold is also reported individually in a
+- With n = 15, every LOPO fold is also reported individually in a
   per-participant figure.
 
 ## 9. Exploratory analyses (labelled as such; not registered)
@@ -187,11 +214,18 @@ E1 is descriptive and is not tested.
   Bent et al. 2021) vs the participant-mean baseline.
 - **EA3:** CGM reliability ceiling. Dexcom G6 MARD gives an upper bound on
   achievable R².
-- **EA4:** E4 repeated on all 16 participants without MEAL features, and
+- **EA4:** E4 repeated on all 15 participants retained under rule 7, without MEAL features, and
   FULL-B on 016 with the −3 h food-log shift that the alignment check
   suggested. Both are sensitivity analyses only.
 - **EA5:** sex is the top feature in Karunarathna & Liang. Repeat E2 for
   FULL-KL without sex.
+- **EA6 (pre-specified sensitivity analysis) [PROPOSED]:** repeat E1–E6 and
+  all eight registered tests with rule 7 switched off, so that participant 015
+  is included (16 participants; E4 still 14). Estimates, CIs and Holm p values
+  are reported next to the primary ones in a supplementary table. EA6 does not
+  replace the primary analysis and is not part of the Holm family. If any
+  registered test's verdict differs between the two analyses, the Discussion
+  says so.
 
 ## 10. Deviations
 
@@ -211,5 +245,6 @@ registered tests.
 | 6 | Primary hypotheses | H1, H2b, H4 | One per claim: leakage size, leakage mechanism, physiology's added value |
 | 7 | ELAPSED probe (H2b) | Add | See §7 |
 | 8 | MEAL exclusions | 015, 016 | `results/time_of_day/` |
-| 9 | XGBoost grid | depth {3,6}, trees {100,300}, lr {0.05,0.1} | Stress-paper grid with deeper trees for 26k-row regression |
+| 9 | XGBoost grid | depth {3,6}, trees {100,300}, lr {0.05,0.1} | Stress-paper grid with deeper trees for a regression on about 28,000 readings |
 | 10 | Guard on H2, H2b | Interpret only if E1 R² lower bound > 0.30 | Prevents a trivial pass when every model is near R² = 0 (seen in the noise-target dry run) |
+| 11 | Data-integrity exclusion (§3 rule 7) | ≥ 864 usable readings (72 h); excludes 015; sensitivity analysis EA6 with 015 | 015 has 470 usable readings; next lowest 1,331. Rule written after seeing coverage counts, not outcomes, and disclosed in §1 |
