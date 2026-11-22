@@ -1,0 +1,17 @@
+participant,header,n_entries,n_unparseable_times,median_entry_hour,median_first_entry_of_day_hour,pct_entries_00_05h,n_standard_breakfast,standard_breakfast_median_hour
+001,present,61,0,12.63,7.5,1.6,4,7.08
+002,present,68,0,15.0,8.62,2.9,0,
+003,missing (11-column layout assumed),58,0,16.05,8.5,0.0,0,
+004,present,55,0,13.25,8.75,0.0,0,
+005,present,93,0,14.0,9.12,0.0,0,
+006,present,73,0,14.67,8.33,6.8,0,
+007,present,103,0,17.92,10.08,0.0,0,
+008,present,82,0,13.44,9.0,0.0,0,
+009,present,100,0,13.75,8.33,0.0,0,
+010,present,173,0,12.5,4.75,5.8,0,
+011,present,104,0,13.5,6.0,0.0,0,
+012,present,151,1,12.17,5.7,3.3,0,
+013,present,90,0,17.33,10.14,1.1,0,
+014,present,88,0,14.92,6.25,0.0,4,6.17
+015,present,77,0,12.75,6.38,10.4,3,7.98
+016,present,45,0,12.0,8.0,0.0,4,8.25

@@ -13,7 +13,7 @@ Every `TODO` must be resolved and agreed by all authors **before any model is tr
 - **Already seen by the authors before registration:**
   - the dataset documentation
   - the food log of participant 001 (to check clock-time plausibility)
-  - the output of `check_time_of_day.py` (TODO: run, attach output, and state here)
+  - the output of `check_time_of_day.py`, run on 22 Nov 2026 (`results/time_of_day/`). It read the food logs, Dexcom CGM glucose values and Demographics.csv for all 16 participants. It showed that clock time is preserved, that food log and CGM agree for 14 of 16 participants (015: food log lies outside the CGM recording; 016: no meal response at logged times), and that the cohort is 9 female / 7 male. No E4 data was read.
 - No glucose-prediction model has been trained by the authors.
 
 ## 2. Unit of analysis and target
@@ -38,7 +38,7 @@ TODO: fix these before running.
 | PHYS | E4 physiology: HR, HRV, TEMP, EDA tonic/phasic, BVP features |
 | ACT | ACC summaries over 2 h (min/max/mean) |
 | TIME | Minutes from midnight, plus sin/cos |
-| MEAL | Time since last logged meal; carbs and sugar over the previous 2/8/24 h |
+| MEAL | Time since last logged meal; carbs and sugar over the previous 2/8/24 h. Computed only for participants who passed the food-log/CGM alignment check (14 of 16; 015 and 016 excluded, see `results/time_of_day/README.md`). TODO: agree this rule. |
 | ID | Sex; HbA1c; participant ID (one-hot, only where it is not leakage-trivial) |
 | FULL-KL | Re-implementation of Karunarathna & Liang's feature list (PHYS + ACT + TIME + sex) |
 | FULL-B | Re-implementation of Bent et al.'s inputs (PHYS + ACT + TIME + MEAL + HbA1c + sex) |
