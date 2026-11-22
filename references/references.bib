@@ -1,5 +1,7 @@
 % References for the BIG IDEAs shortcut/leakage audit — compiled 2026-11-22
-% Entries marked VERIFY: check the title/authors/pages against the publisher page before submission.
+% Every entry with a DOI was checked against Crossref on 22 Nov 2026 (title, authors, venue, volume,
+% pages); the arXiv entry against arxiv.org; the dataset DOI against its PhysioNet page.
+% Holm (1979) and Efron & Tibshirani (1993) have no Crossref DOI and are cited from the print record.
 
 % ===================== Dataset + required citations =====================
 @misc{cho_bigideas_2026,
@@ -13,14 +15,13 @@
 }
 
 @article{bent_digital_2021,
-  author  = {Bent, Brinnae and Cho, Peter J. and Henriquez, Maria and others},
+  author  = {Bent, Brinnae and Cho, Peter J. and Henriquez, Maria and Wittmann, April and Thacker, Connie and Feinglos, Mark and Crowley, Matthew J. and Dunn, Jessilyn P.},
   title   = {Engineering digital biomarkers of interstitial glucose from noninvasive smartwatches},
   journal = {npj Digital Medicine},
   volume  = {4},
   pages   = {89},
   year    = {2021},
-  doi     = {10.1038/s41746-021-00465-w},
-  note    = {VERIFY: full author list}
+  doi     = {10.1038/s41746-021-00465-w}
 }
 
 @article{pollard_physionet_2026,
@@ -40,6 +41,7 @@
   title   = {Revealing Misclassification of Exercise Sessions in Wearable Stress Detection for Automated Insulin Delivery},
   journal = {Sensors},
   volume  = {26},
+  number  = {22},
   pages   = {7340},
   year    = {2026},
   doi     = {10.3390/s26227340}
@@ -54,8 +56,7 @@
   number  = {10},
   pages   = {3207},
   year    = {2025},
-  doi     = {10.3390/s25103207},
-  note    = {Verified against publisher page 22 Nov 2026}
+  doi     = {10.3390/s25103207}
 }
 
 % ===================== Closest competitor + related =====================
@@ -65,7 +66,7 @@
   year          = {2026},
   eprint        = {2608.01820},
   archivePrefix = {arXiv},
-  note          = {VERIFY: check if since published in a venue}
+  note          = {Preprint; no journal reference on arXiv as of 22 Nov 2026}
 }
 
 @article{lu_reproducibility_2026,
@@ -74,39 +75,38 @@
   journal = {PLOS Digital Health},
   volume  = {5},
   number  = {9},
+  pages   = {e0001633},
   year    = {2026},
-  note    = {VERIFY: DOI and article number}
+  doi     = {10.1371/journal.pdig.0001633}
 }
 
 @misc{zhao_reliability_2026,
   author       = {Zhao, Yulin},
   title        = {Measurement Reliability Confounds Cross-Regime Comparisons of Postprandial Glucose Prediction: Evidence from Bidirectional Cross-Cohort Transfer},
-  howpublished = {Research Square preprint rs-11558064},
+  howpublished = {Research Square preprint},
   year         = {2026},
-  note         = {VERIFY: DOI}
+  doi          = {10.21203/rs.3.rs-11558064/v1}
 }
 
 @article{piersanti_skintemp_2025,
   author  = {Piersanti, Agnese and Littero, Martina and Del Giudice, Libera Lucia and Marcantoni, Ilaria and Burattini, Laura and Tura, Andrea and Morettini, Micaela},
-  title   = {{TODO: exact title}},
+  title   = {Variability of the Skin Temperature from Wrist-Worn Device for Definition of Novel Digital Biomarkers of Glycemia},
   journal = {Sensors},
   volume  = {25},
   number  = {13},
   pages   = {4038},
   year    = {2025},
-  doi     = {10.3390/s25134038},
-  note    = {VERIFY: title}
+  doi     = {10.3390/s25134038}
 }
 
 @article{miyakoshi_glucose_2024,
   author  = {Miyakoshi, Takashi and Ito, Yoichi M.},
-  title   = {{TODO: exact title}},
+  title   = {Association of Blood Glucose Data With Physiological and Nutritional Data From Dietary Surveys and Wearable Devices: Database Analysis},
   journal = {JMIR Diabetes},
   volume  = {9},
   pages   = {e62831},
   year    = {2024},
-  doi     = {10.2196/62831},
-  note    = {VERIFY: title}
+  doi     = {10.2196/62831}
 }
 
 % ===================== Other PhysioNet datasets considered (parked) =====================
@@ -145,4 +145,120 @@
   year         = {2002},
   note         = {Version 1.0.0},
   doi          = {10.13026/C26K5Q}
+}
+
+% ===================== Methods and evaluation (added 22 Nov 2026) =====================
+@article{saeb_usecase_2017,
+  author  = {Saeb, Sohrab and Lonini, Luca and Jayaraman, Arun and Mohr, David C. and Kording, Konrad P.},
+  title   = {The need to approximate the use-case in clinical machine learning},
+  journal = {GigaScience},
+  volume  = {6},
+  number  = {5},
+  pages   = {gix019},
+  year    = {2017},
+  doi     = {10.1093/gigascience/gix019}
+}
+
+@article{little_cv_2017,
+  author  = {Little, Max A. and Varoquaux, Ga{\"e}l and Saeb, Sohrab and Lonini, Luca and Jayaraman, Arun and Mohr, David C. and Kording, Konrad P.},
+  title   = {Using and understanding cross-validation strategies. Perspectives on {Saeb} et al.},
+  journal = {GigaScience},
+  volume  = {6},
+  number  = {5},
+  pages   = {gix020},
+  year    = {2017},
+  doi     = {10.1093/gigascience/gix020}
+}
+
+@article{varoquaux_cvfailure_2018,
+  author  = {Varoquaux, Ga{\"e}l},
+  title   = {Cross-validation failure: Small sample sizes lead to large error bars},
+  journal = {NeuroImage},
+  volume  = {180},
+  pages   = {68--77},
+  year    = {2018},
+  doi     = {10.1016/j.neuroimage.2017.06.061}
+}
+
+@article{geirhos_shortcut_2020,
+  author  = {Geirhos, Robert and Jacobsen, J{\"o}rn-Henrik and Michaelis, Claudio and Zemel, Richard and Brendel, Wieland and Bethge, Matthias and Wichmann, Felix A.},
+  title   = {Shortcut learning in deep neural networks},
+  journal = {Nature Machine Intelligence},
+  volume  = {2},
+  number  = {11},
+  pages   = {665--673},
+  year    = {2020},
+  doi     = {10.1038/s42256-020-00257-z}
+}
+
+@article{kapoor_leakage_2023,
+  author  = {Kapoor, Sayash and Narayanan, Arvind},
+  title   = {Leakage and the reproducibility crisis in machine-learning-based science},
+  journal = {Patterns},
+  volume  = {4},
+  number  = {9},
+  pages   = {100804},
+  year    = {2023},
+  doi     = {10.1016/j.patter.2023.100804}
+}
+
+@article{clarke_ceg_1987,
+  author  = {Clarke, William L. and Cox, Daniel and Gonder-Frederick, Linda A. and Carter, William and Pohl, Stephen L.},
+  title   = {Evaluating Clinical Accuracy of Systems for Self-Monitoring of Blood Glucose},
+  journal = {Diabetes Care},
+  volume  = {10},
+  number  = {5},
+  pages   = {622--628},
+  year    = {1987},
+  doi     = {10.2337/diacare.10.5.622}
+}
+
+@article{wadwa_g6_2018,
+  author  = {Wadwa, R. Paul and Laffel, Lori M. and Shah, Viral N. and Garg, Satish K.},
+  title   = {Accuracy of a Factory-Calibrated, Real-Time Continuous Glucose Monitoring System During 10 Days of Use in Youth and Adults with Diabetes},
+  journal = {Diabetes Technology \& Therapeutics},
+  volume  = {20},
+  number  = {6},
+  pages   = {395--402},
+  year    = {2018},
+  doi     = {10.1089/dia.2018.0150},
+  note    = {Overall MARD 10.0\% (PubMed abstract, checked 22 Nov 2026)}
+}
+
+@inproceedings{chen_xgboost_2016,
+  author    = {Chen, Tianqi and Guestrin, Carlos},
+  title     = {{XGBoost}: A Scalable Tree Boosting System},
+  booktitle = {Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  pages     = {785--794},
+  year      = {2016},
+  doi       = {10.1145/2939672.2939785}
+}
+
+@article{dunn_wearables_2021,
+  author  = {Dunn, Jessilyn and Kidzinski, Lukasz and Runge, Ryan and Witt, Daniel and Hicks, Jennifer L. and Sch{\"u}ssler-Fiorenza Rose, Sophia Miryam and Li, Xiao and Bahmani, Amir and Delp, Scott L. and Hastie, Trevor and Snyder, Michael P.},
+  title   = {Wearable sensors enable personalized predictions of clinical laboratory measurements},
+  journal = {Nature Medicine},
+  volume  = {27},
+  number  = {6},
+  pages   = {1105--1112},
+  year    = {2021},
+  doi     = {10.1038/s41591-021-01339-0}
+}
+
+@article{holm_1979,
+  author  = {Holm, Sture},
+  title   = {A simple sequentially rejective multiple test procedure},
+  journal = {Scandinavian Journal of Statistics},
+  volume  = {6},
+  number  = {2},
+  pages   = {65--70},
+  year    = {1979}
+}
+
+@book{efron_bootstrap_1993,
+  author    = {Efron, Bradley and Tibshirani, Robert J.},
+  title     = {An Introduction to the Bootstrap},
+  publisher = {Chapman \& Hall},
+  address   = {New York, NY, USA},
+  year      = {1993}
 }

@@ -1,0 +1,26 @@
+{
+  "self_test": true,
+  "quick": true,
+  "osf_doi": null,
+  "seeds": [
+    0,
+    1
+  ],
+  "n_boot": 500,
+  "h2_guard_e1_r2_lower": -0.013182870388825929,
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5",
+  "sklearn": "1.9.1",
+  "xgboost": "3.4.1",
+  "n_readings": 10547,
+  "n_participants": 6,
+  "meal_participants": [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006"
+  ]
+}
