@@ -50,6 +50,10 @@ def ea1_shap(F, out):
     for scheme, splits, grouped in schemes:
         acc = []
         for k, tr, te in splits:
+            part = out / "ea1_parts" / f"{scheme}_{k}.csv"
+            if part.exists():
+                acc.append(pd.read_csv(part, index_col=0).iloc[:, 0])
+                continue
             train, test = F.iloc[tr], F.iloc[te]
             cols = X.select_kl(train, train["glucose"], FULL_KL, k)
             s = X.make_search("xgb", grouped, False)
@@ -59,6 +63,8 @@ def ea1_shap(F, out):
             contrib = pipe[-1].get_booster().predict(DMatrix(Z), pred_contribs=True)[:, :-1]
             v = pd.Series(np.abs(contrib).mean(axis=0), index=cols).reindex(FULL_KL, fill_value=0.0)
             acc.append(v)
+            part.parent.mkdir(exist_ok=True)
+            v.to_csv(part)
             print(f"  EA1 {scheme}: split {k} done", flush=True)
         m = pd.concat(acc, axis=1).mean(axis=1)
         for f, val in m.items():
@@ -76,6 +82,10 @@ def ea2_personalised(F, out):
     participant's readings (by time), test on the last 50%. Baseline: the participant's
     training mean. Model: XGBoost on PHYS + ACT + TIME (sex and HbA1c are constant within a
     participant), same grid, inner 5-fold CV over contiguous folds (no shuffling)."""
+    fm, fx = out / "predictions" / "EA2_personal_mean.csv.gz", out / "predictions" / "EA2_personal_xgb.csv.gz"
+    if fm.exists() and fx.exists():
+        rd = lambda f: pd.read_csv(f, dtype={"participant": str}, parse_dates=["ts"])
+        return rd(fm), rd(fx)
     rows_m, rows_x = [], []
     cols = X.PHYS + X.ACT + X.TIME
     for p, d in F.groupby("participant"):
@@ -164,9 +174,22 @@ def ea4(F, small, out, res):
 
 
 # ------------------------------------------------------------------ main
+def cached_run(run):
+    """Resume support (added after a container restart killed the first run; no change to any
+    analysis): a configuration whose predictions file already exists is read back, not refitted."""
+    def wrapper(F, name, splits, cols, kind, grouped, quick, out, kl_select=False):
+        f = out / "predictions" / f"{name}.csv.gz"
+        if f.exists():
+            print(f"  {name}: cached", flush=True)
+            return pd.read_csv(f, dtype={"participant": str}, parse_dates=["ts"])
+        return run(F, name, splits, cols, kind, grouped, quick, out, kl_select=kl_select)
+    return wrapper
+
+
 def main(feature_dir, small, out):
     out = Path(out)
     (out / "predictions").mkdir(parents=True, exist_ok=True)
+    X.run = cached_run(X.run)
     F, _ = X.load(feature_dir, self_test=False)
     res = {}
     # EA5: E2 without sex (FULL-KL minus sex, KL selection, LOPO)
