@@ -1,4 +1,13 @@
-# OSF pre-registration: DRAFT, ready for co-author review (not filed)
+# OSF pre-registration (filed 22 Nov 2026: https://osf.io/cvfa3/)
+
+**Filing record.** All co-authors signed off on the eleven decisions in the
+appendix (confirmed by M. Banat, 22 Nov 2026). The registration was filed on
+OSF as https://osf.io/cvfa3/ at 12:58 UTC on 22 Nov 2026, from the text in
+`docs/04_osf_form.md` at commit d0a2f6c. It is awaiting OSF admin approval;
+the DOI is recorded in `docs/03_next_steps.md` once issued. The [PROPOSED]
+markers below are kept as a record of which values were judgement calls; all
+of them were accepted unchanged. No model is run on real glucose until the
+DOI exists.
 
 **Working title:** Revealing time and identity shortcuts in wrist-wearable glucose estimation: a pre-registered re-evaluation of the BIG IDEAs dataset
 
