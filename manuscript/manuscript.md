@@ -417,8 +417,8 @@ The analysis ran in Python 3.13.18 with pandas 3.0.5, NumPy 2.5.3, SciPy
 1.18.1, scikit-learn 1.9.1, XGBoost 3.4.1 [@chen_xgboost_2016] and
 Matplotlib 3.11.2. The code, the
 registration, the check outputs and every reported number are available at
-https://github.com/MohannadBanat/bigideas-glucose-audit; the release used
-for submission will be archived on Zenodo [DOI to be added at submission].
+https://github.com/MohannadBanat/bigideas-glucose-audit, and the snapshot
+used for this article is archived on Zenodo at https://doi.org/10.5281/zenodo.24448197.
 
 ## 3. Results
 
@@ -825,9 +825,9 @@ original investigators [@bent_digital_2021].
 
 **Data Availability Statement:** The dataset is openly available on
 PhysioNet at https://doi.org/10.13026/aw6y-fc44 (version 1.1.3). The
-registration is at https://doi.org/10.17605/OSF.IO/CVFA3. The code and all outputs are at
-https://github.com/MohannadBanat/bigideas-glucose-audit and will be archived on Zenodo at
-submission [DOI to be added].
+registration is at https://doi.org/10.17605/OSF.IO/CVFA3. The code and all derived outputs are archived on Zenodo at
+https://doi.org/10.5281/zenodo.24448197 (snapshot of
+https://github.com/MohannadBanat/bigideas-glucose-audit).
 
 **Use of AI tools:** [The authors must state here, in MDPI's required form,
 which AI tools were used and for what. They take full responsibility for
