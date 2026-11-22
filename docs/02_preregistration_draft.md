@@ -105,10 +105,18 @@ as it was in the stress paper.
     subsampling 0.8.
   - Ridge: α {0.1, 1, 10, 100}.
 - **Inner CV:** grouped 5-fold by participant for every participant-held-out
-  experiment. **E1 only** uses ungrouped 5-fold CV, as published.
+  or blocked experiment (E2, E4, E5, E6). The RANDOM experiments (E1, E3)
+  use ungrouped 5-fold CV, as published, so that E3's shortcut models are
+  tuned the same way as the model they are compared with.
 - **Seeds:** random-split experiments are repeated with **20 seeds** (as
   published). Participant-held-out experiments use one seed per fold. The
   seeds are 0–19.
+- **Secondary model use:** ridge regression is run for E2 (FULL-KL, LOPO)
+  and E4 (FULL-B, LOPO) and reported descriptively. The registered tests use
+  XGBoost.
+- **Analysis code:** `code/experiments.py` implements this plan. Before
+  filing, it was checked only with `--self-test`, which replaces glucose
+  with random noise. It refuses to run on real glucose without an OSF DOI.
 
 ## 6. Splits
 
