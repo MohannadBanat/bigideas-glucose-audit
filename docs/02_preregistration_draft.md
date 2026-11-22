@@ -173,15 +173,19 @@ temporal leakage. Clock time (H2) mixes leakage with real circadian effects,
 so H2b is the cleaner test. The stress paper used the same probe ("elapsed
 time alone").
 
-**Guard on H2 and H2b [PROPOSED].** A non-inferiority test is trivially
-passed when both arms are near zero: if FULL-KL itself has R² ≈ 0 under
-RANDOM, any shortcut model is "within 0.05" of it. H2 and H2b are therefore
+**Guard on H2, H2b and H3 [PROPOSED].** These three tests compare shortcut
+models with FULL-KL, and each passes trivially when FULL-KL has learned
+nothing. A non-inferiority test is passed when both arms are near zero: if
+FULL-KL has R² ≈ 0 under RANDOM, any shortcut model is "within 0.05" of it.
+H3 is passed when FULL-KL's R² is slightly negative, because then
+0.5 × R²(FULL-KL) is below any R² near zero. H2, H2b and H3 are therefore
 interpreted only if the lower one-sided 95% bootstrap bound of E1's R² exceeds
-0.30. If it does not, H2 and H2b are reported as "not interpretable", their
-p values stay in the Holm family (so the correction does not get easier), and
-neither counts as support. A dry run of the analysis code on a noise target
-(`--self-test`) showed this failure mode: H2 and H2b came out "supported" with
-every R² near 0.
+0.30. If it does not, they are reported as "not interpretable", their p values
+stay in the Holm family (so the correction does not get easier), and none
+counts as support. Dry runs of the analysis code on a noise target
+(`--self-test`) showed both failure modes: H2 and H2b came out "supported"
+with every R² near 0, and H3 came out "supported" once participant 015 was
+excluded.
 
 **Primary hypotheses [PROPOSED]:** H1, H2b and H4.
 
@@ -246,5 +250,5 @@ registered tests.
 | 7 | ELAPSED probe (H2b) | Add | See §7 |
 | 8 | MEAL exclusions | 015, 016 | `results/time_of_day/` |
 | 9 | XGBoost grid | depth {3,6}, trees {100,300}, lr {0.05,0.1} | Stress-paper grid with deeper trees for a regression on about 28,000 readings |
-| 10 | Guard on H2, H2b | Interpret only if E1 R² lower bound > 0.30 | Prevents a trivial pass when every model is near R² = 0 (seen in the noise-target dry run) |
+| 10 | Guard on H2, H2b, H3 | Interpret only if E1 R² lower bound > 0.30 | Prevents a trivial pass when every model is near R² = 0 (seen in the noise-target dry run) |
 | 11 | Data-integrity exclusion (§3 rule 7) | ≥ 864 usable readings (72 h); excludes 015; sensitivity analysis EA6 with 015 | 015 has 470 usable readings; next lowest 1,331. Rule written after seeing coverage counts, not outcomes, and disclosed in §1 |
