@@ -108,7 +108,7 @@ These are fixed now and applied identically in every experiment.
 | TIME | Minutes from midnight, plus its sine and cosine | 3 |
 | ELAPSED | Minutes since the participant's first CGM reading. **A pure leakage probe with no physiological meaning** | 1 |
 | MEAL | Minutes since the last logged meal event; carbohydrate and sugar over the previous 2, 8 and 24 h (14 participants) | 7 |
-| ID | Sex and HbA1c. **ID+P** adds a one-hot participant indicator, used only under random splits, where it measures identity leakage | 2 (+16) |
+| ID | Sex and HbA1c. **ID+P** adds a one-hot participant indicator, used only under random splits, where it measures identity leakage | 2 (+15) |
 | FULL-KL | Approximate re-implementation of Karunarathna & Liang: PHYS + ACT + TIME + sex, then random-forest importance on the training split only, keeping the top 30 (or all, if fewer) | ≤30 |
 | FULL-B | Approximate re-implementation of Bent et al.: PHYS + ACT + TIME + MEAL + HbA1c + sex | 36 |
 
@@ -150,7 +150,7 @@ as it was in the stress paper.
 | Name | Definition |
 |---|---|
 | RANDOM | Readings pooled across participants, then a random 80/20 split (Karunarathna & Liang). 20 seeds |
-| LOPO | Leave one participant out: 16 folds (14 for MEAL sets) |
+| LOPO | Leave one participant out: 15 folds (14 for MEAL sets) |
 | BLOCKED-b | Within each participant, split the recording into 5 contiguous blocks. Each block is the test set once, and training readings within *b* minutes of the test block are removed. *b* ∈ {0, 30, 60, 120, 240}. Inputs exclude ELAPSED and ID+P |
 
 ## 7. Registered experiments and hypotheses
