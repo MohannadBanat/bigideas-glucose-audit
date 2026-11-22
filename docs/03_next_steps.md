@@ -9,7 +9,7 @@
 | 5 | Email Karunarathna & Liang about their split | Email sent; reply logged | | |
 | 6 | Read KIT arXiv 2608.01820 in full; write the differentiation paragraph | Paragraph drafted | | |
 | 7 | Resolve all TODOs in `02_preregistration_draft.md` | Co-authors sign off | | |
-| 8 | **File the OSF pre-registration** | OSF DOI obtained | | |
+| 8 | **File the OSF pre-registration** | OSF DOI obtained | M. Banat | Co-authors signed off on all 11 decisions; filed 22 Nov 2026 12:58 UTC as https://osf.io/cvfa3/, awaiting OSF admin approval. DOI: pending |
 | 9 | Port the stress-paper E4 preprocessing to BIG IDEAs (5-min windows aligned to CGM) | Feature table with one row per CGM reading | | |
 | 10 | Run E1–E6 exactly as registered | Results tables + figures | | |
 | 11 | Exploratory analyses EA1–EA3 | Labelled as exploratory | | |
