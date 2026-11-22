@@ -365,7 +365,7 @@ failure modes.
 **Table 1.** Registered experiments and hypotheses.
 
 | Exp. | Question | Comparison | Hypothesis |
-|---|---|---|---|
+|----|------------|----------|------------|
 | E1 | Does the re-implementation reach the published R²? | FULL-KL, RANDOM | Descriptive. Approximately reproduced if mean R² ≥ 0.63 |
 | E2 | How much does holding participants out cost? | FULL-KL, RANDOM vs LOPO | H1: R² drop > 0.30 |
 | E3 | Do shortcuts alone match the full model under RANDOM? | TIME+ID+P, ELAPSED+ID+P, ID+P vs FULL-KL | H2, H2b: non-inferior within 0.05 R². H3: ID+P R² > half of FULL-KL R² |
@@ -487,7 +487,7 @@ one-sided 95% bound of the E1 R² was 0.550, above the registered guard of
 **Table 3.** Pooled performance of every registered configuration (95% CI).
 
 | Exp. | Inputs | Evaluation | R² | RMSE (mg/dL) | MARD (%) | Zone A (%) | Zones A+B (%) |
-|---|---|---|---|---|---|---|---|
+|----|---------------|-----------|--------------|------------|------|------|------|
 | E1 | FULL-KL | RANDOM | 0.612 (0.539–0.664) | 14.3 (13.0–15.9) | 8.9 | 90.7 | 99.4 |
 | E3 | TIME+ID+P | RANDOM | 0.359 (0.259–0.434) | 18.4 (16.6–20.4) | 11.6 | 83.2 | 99.3 |
 | E3 | ELAPSED+ID+P | RANDOM | 0.763 (0.717–0.797) | 11.2 (10.3–12.0) | 6.8 | 95.3 | 99.6 |
@@ -524,7 +524,7 @@ for 9 of 15 (Figure 3). The LOPO RMSE of 22.1 mg/dL is close to the 21.2 ±
 and H5).
 
 | Test | Registered claim | Estimate (95% CI) | Holm *p* | Result |
-|---|---|---|---|---|
+|--------|---------------|-------------|-----|--------|
 | H1 (primary) | R²(RANDOM) − R²(LOPO) > 0.30 | 0.542 (0.465–0.647) | 0.0008 | Supported |
 | H2 | R²(FULL-KL) − R²(TIME+ID+P) < 0.05, RANDOM | 0.254 (0.220–0.298) | 1.0 | Not established |
 | H2b (primary) | R²(FULL-KL) − R²(ELAPSED+ID+P) < 0.05, RANDOM | −0.151 (−0.203 to −0.112) | 0.0008 | Supported |
@@ -609,7 +609,7 @@ estimates moved by less than 0.01 in R², and H1, H2b, H4 and H6 kept Holm
 pre-specified sensitivity analysis EA6 (participant 015 included).
 
 | Test | Primary: estimate (95% CI) | Primary Holm *p* | EA6: estimate (95% CI) | EA6 Holm *p* | Verdict changes? |
-|---|---|---|---|---|---|
+|---|--------|----|--------|----|-----|
 | H1 | 0.542 (0.465–0.647) | 0.0008 | 0.539 (0.464–0.642) | 0.0008 | No |
 | H2 | 0.254 (0.220–0.298) | 1.0 | 0.256 (0.222–0.299) | 1.0 | No |
 | H2b | −0.151 (−0.203 to −0.112) | 0.0008 | −0.152 (−0.203 to −0.113) | 0.0008 | No |
@@ -811,7 +811,7 @@ random-split R² or on the Clarke grid.
 
 ## 6. Back Matter
 
-**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.Als., D.A.-F. and A.Alg.; visualization, M.B.; supervision, H.A.O.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
+**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.A. (Ayoub Alsarhan), D.A.-F. and A.A. (Abdulmohsen Algarni); visualization, M.B.; supervision, H.A.O.; project administration, M.B. All authors have read and agreed to the published version of the manuscript.
 
 **Funding:** This research was financially supported by the Deanship of Scientific Research and Graduate Studies at King Khalid University under research grant number (R.G.P.2/191/47).
 
@@ -829,16 +829,43 @@ registration is at https://doi.org/10.17605/OSF.IO/CVFA3. The code and all deriv
 https://doi.org/10.5281/zenodo.24448197 (snapshot of
 https://github.com/MohannadBanat/bigideas-glucose-audit).
 
-**Use of AI tools:** A generative AI tool (Claude Opus 5.5, Anthropic, San Francisco, CA, USA) was used under the authors' direction to write the analysis code, draft the text and carry out an independent check of the code and reported numbers; the authors reviewed the analysis plans, code, outputs and text. The authors take full responsibility for the content of this publication.
+**Acknowledgments:** The authors thank the creators of the BIG IDEAs dataset for making it openly available. A generative AI tool (Claude Opus 5.5, Anthropic, San Francisco, CA, USA) was used under the authors' direction to write the analysis code, draft the text and carry out an independent check of the code and reported numbers; the authors reviewed the analysis plans, code, outputs and text. The authors take full responsibility for the content of this publication.
 
 **Conflicts of Interest:** The authors declare no conflicts of interest.
+
+## Abbreviations
+
+The following abbreviations are used in this manuscript:
+
+::: {custom-style="MDPI Abbrev"}
+ACC	Accelerometry\
+BVP	Blood volume pulse\
+CGM	Continuous glucose monitor\
+CI	Confidence interval\
+CV	Cross-validation\
+EDA	Electrodermal activity\
+HbA1c	Glycated haemoglobin\
+HR	Heart rate\
+IBI	Inter-beat interval\
+LOPO	Leave-one-participant-out\
+MARD	Mean absolute relative difference\
+OSF	Open Science Framework\
+PPG	Photoplethysmography\
+RMSE	Root mean squared error\
+RMSSD	Root mean square of successive differences between beats\
+SCR	Skin conductance response\
+SD	Standard deviation\
+SDNN	Standard deviation of inter-beat intervals\
+SHAP	Shapley additive explanations\
+XGBoost	Extreme gradient boosting
+:::
 
 ## Appendix A
 
 **Table A1.** Model settings, as registered.
 
 | Setting | Value |
-|---|---|
+|-----|-----------|
 | XGBoost grid | Depth ∈ {3, 6}; trees ∈ {100, 300}; learning rate ∈ {0.05, 0.1}; subsampling 0.8 |
 | Ridge grid | α ∈ {0.1, 1, 10, 100} |
 | Pipeline | Median imputation, standard scaling, regressor; fitted on training data only |

@@ -66,7 +66,7 @@
   </macro>
   <macro name="book-container">
     <group delimiter=" ">
-      <text variable="title" text-case="title" suffix="."/>
+      <text variable="title" suffix="."/>
       <text term="in" text-case="capitalize-first"/>
       <text variable="container-title" font-style="italic"/>
     </group>
@@ -101,7 +101,7 @@
       <if type="book chapter" match="any">
         <text variable="ISBN" prefix=" ISBN "/>
       </if>
-      <else-if type="article-journal">
+      <else-if type="article-journal paper-conference" match="any">
         <text variable="DOI" prefix=", doi:"/>
       </else-if>
     </choose>
@@ -131,7 +131,7 @@
         <else-if type="thesis">
           <group delimiter=", ">
             <group delimiter=". ">
-              <text variable="title" text-case="title"/>
+              <text variable="title"/>
               <text variable="genre"/>
             </group>
             <text macro="publisher"/>
@@ -141,7 +141,7 @@
           </group>
         </else-if>
         <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
-          <group delimiter="; " suffix=";">
+          <group delimiter="; ">
             <text variable="title" text-case="title" font-style="italic"/>
             <text macro="editor" prefix=" "/>
             <text macro="series"/>
@@ -174,7 +174,7 @@
         <else-if type="paper-conference">
           <group delimiter="; ">
             <group delimiter=" ">
-              <text variable="title" text-case="title" suffix="."/>
+              <text variable="title" suffix="."/>
               <text variable="container-title" prefix="In Proceedings of the "/>
             </group>
             <text macro="editor"/>
@@ -190,7 +190,7 @@
         </else-if>
         <else-if type="webpage">
           <group delimiter=" ">
-            <text variable="title" text-case="title"/>
+            <text variable="title"/>
             <group delimiter=": ">
               <text term="available at" text-case="capitalize-first"/>
               <text variable="URL"/>
@@ -207,7 +207,7 @@
         </else-if>
         <else-if type="speech">
           <group delimiter=" ">
-            <text variable="title" text-case="title" suffix="."/>
+            <text variable="title" suffix="."/>
             <group delimiter=", ">
               <group delimiter=" ">
                 <text term="presented at" text-case="capitalize-first"/>
@@ -220,7 +220,7 @@
         </else-if>
         <else-if type="article-journal">
           <group delimiter=" ">
-            <text variable="title" text-case="title" suffix="."/>
+            <text variable="title" suffix="."/>
             <text variable="container-title" font-style="italic" form="short"/>
             <group delimiter=", ">
               <text macro="issued" font-weight="bold"/>
@@ -246,7 +246,7 @@
         <else>
           <group delimiter=" ">
             <group delimiter=". ">
-              <text variable="title" text-case="title"/>
+              <text variable="title"/>
               <text variable="container-title" font-style="italic" form="short"/>
             </group>
             <group delimiter=", ">

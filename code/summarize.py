@@ -134,7 +134,7 @@ def md_tables(res):
     M = pd.read_csv(res / "experiments" / "metrics.csv")
     g = lambda k, m: M[(M.config == k) & (M.metric == m)].iloc[0]
     t3 = ["| Exp. | Inputs | Evaluation | R² | RMSE (mg/dL) | MARD (%) | Zone A (%) | Zones A+B (%) |",
-          "|---|---|---|---|---|---|---|---|"]
+          "|----|---------------|-----------|--------------|------------|------|------|------|"]
     for k, (e, inp, ev) in LAB.items():
         if k not in set(M.config):
             continue
@@ -143,7 +143,7 @@ def md_tables(res):
                   f"{ma.value:.1f} | {za.value:.1f} | {zab.value:.1f} |")
     H = pd.read_csv(res / "experiments" / "hypotheses.csv")
     verdict = lambda h, s: ("Supported" if s else ("Not established" if h in ("H2", "H2b") else "Not supported"))
-    t4 = ["| Test | Registered claim | Estimate (95% CI) | Holm *p* | Result |", "|---|---|---|---|---|"]
+    t4 = ["| Test | Registered claim | Estimate (95% CI) | Holm *p* | Result |", "|--------|---------------|-------------|-----|--------|"]
     for r in H.itertuples():
         d = 1 if r.hypothesis == "H6" else (2 if r.hypothesis == "H4" else 3)
         if r.hypothesis == "H7":
@@ -156,7 +156,7 @@ def md_tables(res):
     if (res / "experiments_ea6" / "hypotheses.csv").exists():
         H6 = pd.read_csv(res / "experiments_ea6" / "hypotheses.csv")
         ts = ["| Test | Primary: estimate (95% CI) | Primary Holm *p* | EA6: estimate (95% CI) | EA6 Holm *p* | Verdict changes? |",
-              "|---|---|---|---|---|---|"]
+              "|---|--------|----|--------|----|-----|"]
         for a, b in zip(H.itertuples(), H6.itertuples()):
             d = 1 if a.hypothesis == "H6" else (2 if a.hypothesis == "H4" else (4 if a.hypothesis == "H7" else 3))
             pf = lambda p: "0.0008" if p < 0.001 else (f"{p:.3f}" if p < 1 else "1.0")
