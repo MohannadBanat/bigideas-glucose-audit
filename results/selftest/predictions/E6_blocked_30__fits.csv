@@ -1,0 +1,6 @@
+split,best,n_features
+0,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",27
+1,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",27
+2,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",27
+3,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",27
+4,"{'m__learning_rate': 0.1, 'm__max_depth': 3, 'm__n_estimators': 50, 'm__subsample': 0.8}",27

@@ -98,6 +98,11 @@ relevant to the identity shortcut (E3, H3).
 > not use MEAL features include all 16 participants. As a sensitivity
 > analysis, E4 is repeated on the 14 aligned participants for all feature
 > sets, so that comparisons are made on the same people.
+>
+> Update, 22 Nov 2026: the pre-registration later added a data-integrity rule
+> (§3 rule 7: at least 72 h of overlapping E4 and CGM data), which excludes
+> 015 from every registered experiment. Experiments without MEAL features
+> therefore use 15 participants, not 16; EA6 repeats them with 015 included.
 
 ## Files
 
