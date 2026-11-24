@@ -885,9 +885,9 @@ glucose estimates should not be relied on for clinical decisions.
 
 **Supplementary Materials:** The following supporting information can be downloaded at: https://www.mdpi.com/article/doi/s1, Table S1: TRIPOD+AI checklist.
 
-**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.A. (Ayoub Alsarhan), D.A.-F. and A.A. (Abdulmohsen Algarni); visualization, M.B.; supervision, H.A.O.; project administration, M.B.; [[CONFIRM: funding acquisition, A.A. (Abdulmohsen Algarni)? The grant is from King Khalid University, A.A.'s institution; add or delete]]. All authors have read and agreed to the published version of the manuscript.
+**Author Contributions:** Conceptualization, M.B. and H.A.O.; methodology, M.B.; software, M.B.; validation, M.B.; formal analysis, M.B.; investigation, M.B.; data curation, M.B.; writing—original draft preparation, M.B.; writing—review and editing, M.B., H.A.O., A.A. (Ayoub Alsarhan), D.A.-F. and A.A. (Abdulmohsen Algarni); visualization, M.B.; supervision, H.A.O.; project administration, M.B.; funding acquisition, A.A. (Abdulmohsen Algarni). All authors have read and agreed to the published version of the manuscript.
 
-**Funding:** This research was financially supported by the Deanship of Scientific Research and Graduate Studies at King Khalid University under research grant number (R.G.P.2/191/47). [[CONFIRM: The APC was funded by ...]]
+**Funding:** This research was financially supported by the Deanship of Scientific Research and Graduate Studies at King Khalid University under research grant number (R.G.P.2/191/47).
 
 **Institutional Review Board Statement:** Not applicable. This study is a
 secondary analysis of a publicly available, de-identified dataset (PhysioNet,
@@ -907,7 +907,7 @@ https://github.com/MohannadBanat/bigideas-glucose-audit).
 
 **Acknowledgments:** The authors thank the creators of the BIG IDEAs dataset for making it openly available. A generative AI tool (Claude Opus 5.5, Anthropic, San Francisco, CA, USA) was used under the authors' direction to write the analysis code, draft the text and carry out an independent check of the code and reported numbers; the authors reviewed the analysis plans, code, outputs and text. The authors take full responsibility for the content of this publication.
 
-**Conflicts of Interest:** The authors declare no conflicts of interest. [[CONFIRM: The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the results.]]
+**Conflicts of Interest:** The authors declare no conflicts of interest. The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript; or in the decision to publish the results.
 
 ## Abbreviations
 
