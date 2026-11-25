@@ -20,7 +20,7 @@ five authors appear; checked against that article's PDF (first page) on 22 Nov 2
 ORCIDs are from the same PDF. Re-check each affiliation with its author before
 submission. E-mail addresses are kept out of this public repository. -->
 
-**Authors:** Mohannad Banat ^1,\*^, Hamza Abu Owida ^1^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4,\*^
+**Authors:** Mohannad Banat ^1^, Hamza Abu Owida ^1,\*^, Ayoub Alsarhan ^2^, Dimah Al-Fraihat ^3^ and Abdulmohsen Algarni ^4,\*^
 
 ^1^ Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan
 
@@ -32,7 +32,7 @@ submission. E-mail addresses are kept out of this public repository. -->
 
 **ORCID:** M. Banat 0009-0007-1413-4746; H. Abu Owida 0000-0001-6943-6134; A. Alsarhan 0000-0001-9075-2828; D. Al-Fraihat 0000-0002-0993-8287; A. Algarni 0000-0002-7556-958X
 
-\* Correspondence: Mohannad Banat (M.B.) and Abdulmohsen Algarni (A.Alg.). [E-mail addresses are added only in the submission file, not in this public repository.]
+\* Correspondence: Hamza Abu Owida (H.A.O.) and Abdulmohsen Algarni (A.A., Abdulmohsen Algarni). [E-mail addresses are added only in the submission file, not in this public repository.]
 
 ## Abstract
 

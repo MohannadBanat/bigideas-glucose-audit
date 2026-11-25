@@ -45,18 +45,18 @@ FULL_W = 10465       # full width between margins
 FIG_CM = 17.0        # figures at full width
 MAX_FIG_H_CM = 11.5  # ... but no taller than this
 
-AUTHORS = [("Mohannad Banat", "1,*"), ("Hamza Abu Owida", "1"), ("Ayoub Alsarhan", "2"),
+AUTHORS = [("Mohannad Banat", "1"), ("Hamza Abu Owida", "1,*"), ("Ayoub Alsarhan", "2"),
            ("Dimah Al-Fraihat", "3"), ("Abdulmohsen Algarni", "4,*")]
 AFFIL = [
     ("1", "Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan",
-     ["abuowida"]),
+     ["banat"]),
     ("2", "Department of Information Technology, Faculty of Prince Al-Hussien bin Abdullah, The Hashemite University, "
           "Zarqa 13133, Jordan", ["alsarhan"]),
     ("3", "Department of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan",
      ["alfraihat"]),
     ("4", "Department of Computer Science, King Khalid University, Abha 61421, Saudi Arabia", []),
 ]
-CORR_PUBLIC = "M.B. and A.A. (Abdulmohsen Algarni)"
+CORR_PUBLIC = "H.A.O. and A.A. (Abdulmohsen Algarni)"
 
 
 # ---------------------------------------------------------------- markdown
