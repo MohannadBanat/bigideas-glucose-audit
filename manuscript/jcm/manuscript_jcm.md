@@ -36,31 +36,27 @@ submission. E-mail addresses are kept out of this public repository. -->
 
 ## Abstract
 
-**Background/Objectives:** Wearables that claim to estimate glucose without
-piercing the skin are widely marketed, and the U.S. Food and Drug
-Administration has warned that unauthorised devices of this kind can lead to
-dangerous errors in diabetes management. Published accuracy figures for
-wrist-worn glucose estimation usually come from random splits of readings, in
-which the same people and hours appear in training and test data. We tested
+**Background/Objectives:** The U.S. Food and Drug Administration has warned
+that unauthorised wearables claiming to measure glucose without piercing the
+skin can lead to dangerous errors in diabetes management. Published accuracy figures for
+wrist-worn glucose estimation usually come from random splits of readings, which put the same people and hours in training and test data. We tested
 whether such figures reflect information carried by wrist signals.
 **Methods:** We re-evaluated glucose estimation on the public BIG IDEAs
 dataset (Dexcom G6 continuous glucose monitor and Empatica E4 wristband; 15 of
-16 adults with high-normal glucose or prediabetes analysed) under an analysis
-plan registered before any model was trained. A re-implemented published model
+16 adults with high-normal glucose or prediabetes analysed) under an analysis plan registered before modelling. A re-implemented published model
 was compared with shortcut-only and constant baselines under random-split and
 leave-one-participant-out evaluation. **Results:** Under the published random
 80/20 split, our re-implementation reached R² = 0.61 (95% CI 0.54–0.66;
 published 0.73). A model given only participant identity and the time elapsed
 since the start of the recording reached R² = 0.76 (0.72–0.80). Holding
 participants out reduced the physiology model's R² to 0.07 (−0.06 to 0.16).
-When time of day, meals, sex and HbA1c were known, wrist physiology and
-activity improved the root mean squared error by 0.39 mg/dL (−0.05 to 0.87). A
+Beyond time of day, meals, sex and HbA1c, wrist physiology and activity improved the root mean squared error by 0.39 mg/dL (−0.05 to 0.87). A
 constant prediction placed 99.2% of readings in Clarke zones A and B, as did
 every model. **Conclusions:** On these data, random-split accuracy reflects
-interpolation within each recording, not information carried by wrist signals.
-Before clinicians or patients rely on wearable glucose estimates, the
-estimates should be validated on people the model has not seen and compared
-against shortcut-only and constant baselines.
+interpolation within each recording, not wrist-signal information.
+Before clinicians or patients rely on them, wearable glucose estimates should
+be validated on people the model has not seen and compared against
+shortcut-only and constant baselines.
 
 **Keywords:** continuous glucose monitoring; non-invasive glucose monitoring;
 wearable sensors; digital health; machine learning; data leakage; prediabetes;
@@ -169,7 +165,7 @@ November 2026 (https://doi.org/10.17605/OSF.IO/CVFA3) before any model was
 fitted to glucose. The analysis code was deposited with the registration,
 and the code that produced the results is byte-identical to it (SHA-256
 `dea04bc3…5333182b`). Section 2.9 lists what the authors
-had seen before registration. Deviations are reported in Appendix B.
+had seen before registration. Deviations are reported in Appendix B (Table B1).
 
 ### 2.1. Dataset
 
@@ -506,7 +502,7 @@ inter-beat intervals during movement.
 Under the published random 80/20 split, FULL-KL reached a mean R² of 0.613
 over the 20 seeds (SD 0.014; range 0.582–0.635). Pooled over seeds, R² was
 0.612 (95% CI 0.539–0.664), RMSE 14.3 mg/dL (13.0–15.9), MARD 8.9% and
-Clarke zones A + B 99.4% (Table 3). The published values are R² = 0.73, RMSE
+Clarke zones A + B 99.4% (Table 3; Figure 2). The published values are R² = 0.73, RMSE
 11.9 mg/dL and 99.4% in zones A + B [@karunarathna_glucose_2025]. The mean
 R² was below the registered threshold of 0.63, so by the registered rule the
 published R² was *not* approximately reproduced; the published Clarke
@@ -621,7 +617,8 @@ sex reached R² = 0.112 (0.032–0.163), against 0.108 (0.027–0.158) with a
 drop between random and LOPO evaluation. Longer buffers changed R² by less
 than 0.01 (Figure 5). Splitting each recording into contiguous blocks
 therefore removed almost all of the leakage that the random split allows;
-the buffer around the test block added little.
+the buffer around the test block added little. Figure 6 summarises the
+estimates of all eight registered tests.
 
 ![Figure 5. R² of FULL-KL inputs (without sex) under BLOCKED evaluation, against the buffer removed between training and test blocks (95% participant-bootstrap intervals).](../results/experiments/figures/fig5_buffer.png)
 
@@ -789,8 +786,8 @@ For a clinician or patient, the question is whether a wristband estimate says
 more about a person's glucose than knowing nothing about them. In this study it
 barely did. Held out by participant, the re-implemented physiology model had an
 RMSE of 22.1 mg/dL, against 23.3 mg/dL for a constant prediction of the
-training mean, and the standard deviation of glucose in the analysed readings
-was 22.9 mg/dL (Section 3.1, Table 3); zone A of the Clarke grid rose only from
+training mean (Table 3), and the standard deviation of glucose in the analysed
+readings was 22.9 mg/dL (Section 3.1); zone A of the Clarke grid rose only from
 70.4% to 74.9%. An error as large as the spread of glucose across the cohort
 cannot reliably track the changes in glucose that matter for decisions. Under
 a random split, the same kind of model appeared accurate (RMSE 14.3 mg/dL;
@@ -873,8 +870,8 @@ On the BIG IDEAs dataset, the accuracy of wrist-wearable glucose estimation
 under a random split of readings is explained by where each reading lies
 in a participant's recording: a model with no physiology at all
 outperformed the physiology model. Held out by participant, wrist
-physiology explained almost none of the variance in glucose, and added
-0.4 mg/dL of RMSE to what time, meals and HbA1c already provided. A constant
+physiology explained almost none of the variance in glucose, and improved
+RMSE by only 0.4 mg/dL beyond what time, meals, sex and HbA1c already provided. A constant
 prediction placed 99.2% of readings in Clarke zones A + B. Claims that wrist
 wearables estimate glucose should rest on participant-held-out evaluation,
 compared against shortcut-only and constant baselines, and not on

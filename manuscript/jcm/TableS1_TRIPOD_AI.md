@@ -36,7 +36,7 @@ title: "Supplementary Table S1. TRIPOD+AI checklist"
 | 13 | Class imbalance | Not applicable (continuous outcome). |
 | 14 | Fairness | Not addressed beyond sex (Sections 3.7 EA1, EA5); dataset too small for subgroup fairness analysis. |
 | 15 | Model output | Continuous glucose estimate in mg/dL; no thresholds (Section 2.3). |
-| 16 | Differences between development and evaluation data | Section 2.4 (differences between the re-implementation and the published model); Section 2.1 (dataset versions). |
+| 16 | Differences between development and evaluation data | Section 2.4 (differences between the re-implementation and the published model); Section 2.1 (dataset versions); deviations from the registered plan in Appendix B, Table B1. |
 | 17 | Ethical approval | Institutional Review Board and Informed Consent Statements (back matter). |
 | 18a | Funding | Funding statement (back matter). |
 | 18b | Conflicts of interest | Conflicts of Interest statement (back matter). |
@@ -50,7 +50,7 @@ title: "Supplementary Table S1. TRIPOD+AI checklist"
 | 20c | Comparison with development data | Not applicable (same dataset as the published models; Section 2.1). |
 | 21 | Numbers in each analysis | Sections 2.6 and 3.1 (readings and participants per scheme). |
 | 22 | Full model specification | Code and settings archived (Zenodo; Appendix A). The re-implemented models are evaluation baselines, not models proposed for use. |
-| 23a | Performance with confidence intervals | Tables 3–5; Figures 2–6. Sex subgroup: exploratory EA5 (Section 3.7). |
+| 23a | Performance with confidence intervals | Tables 3–5; Figures 2–6. Sex subgroup: exploratory EA5 (Section 3.7); feature attribution EA1 (Figure 7). |
 | 23b | Heterogeneity across clusters | Per-participant RMSE (Figure 3; Section 3.3). |
 | 24 | Model updating results | Not applicable. |
 | 25 | Interpretation | Sections 4.1–4.5. |
