@@ -24,7 +24,7 @@ submission. E-mail addresses are kept out of this public repository. -->
 
 ^1^ Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan
 
-^2^ Department of Information Technology, Faculty of Prince Al-Hussien bin Abdullah, The Hashemite University, Zarqa 13133, Jordan
+^2^ Department of Prince Al-Hussein Bin Abdallah II for Information Technology, The Hashemite University, Zarqa 13133, Jordan
 
 ^3^ Department of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan
 

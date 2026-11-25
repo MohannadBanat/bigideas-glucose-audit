@@ -50,8 +50,7 @@ AUTHORS = [("Mohannad Banat", "1"), ("Hamza Abu Owida", "1,*"), ("Ayoub Alsarhan
 AFFIL = [
     ("1", "Department of Medical Engineering, Faculty of Engineering, Al-Ahliyya Amman University, Amman 19328, Jordan",
      ["banat"]),
-    ("2", "Department of Information Technology, Faculty of Prince Al-Hussien bin Abdullah, The Hashemite University, "
-          "Zarqa 13133, Jordan", ["alsarhan"]),
+    ("2", "Department of Prince Al-Hussein Bin Abdallah II for Information Technology, The Hashemite University, Zarqa 13133, Jordan", ["alsarhan"]),
     ("3", "Department of Software Engineering, Faculty of Information Technology, Isra University, Amman 11622, Jordan",
      ["alfraihat"]),
     ("4", "Department of Computer Science, King Khalid University, Abha 61421, Saudi Arabia", []),
